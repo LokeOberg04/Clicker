@@ -60,6 +60,7 @@ select {
     font: inherit;
 }
 
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
@@ -89,8 +90,8 @@ select {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #f8f8f8;
-    color: #121212;
+    background-color: #121212;
+    color: #f8f8f8;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* För att göra footern sticky så har vi flex på bodyn och då räcker det med 
@@ -100,6 +101,10 @@ footer {
     margin-top: auto;
     padding-top: 2rem;
     padding-bottom: 3rem;
+}
+
+img {
+    max-width: 18rem;
 }
 
 /* Alla strukturelement på sidan kommer att använda denna container för att skapa
