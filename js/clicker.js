@@ -13,6 +13,7 @@ const mpsTracker = document.querySelector('#mps'); // money per second
 const mpcTracker = document.querySelector('#mpc'); // money per click
 const upgradeList = document.querySelector('#upgradelist');
 const msgbox = document.querySelector('#msgbox');
+const potatisbulle = document.querySelector('#bulle');
 
 /* Följande variabler använder vi för att hålla reda på hur mycket pengar som
  * spelaren, har och tjänar.
@@ -22,11 +23,12 @@ const msgbox = document.querySelector('#msgbox');
  * Läs mer: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
  */
 let money = 0;
-let moneyPerClick = 1;
+let moneyPerClick = 5;
 let moneyPerSecond = 0;
 let last = 0;
 
-let achievementTest = false;
+let achievementClick = false;
+let achievementSecond = false;
 
 /* Med ett valt element, som knappen i detta fall så kan vi skapa listeners
  * med addEventListener så kan vi lyssna på ett specifikt event på ett html-element
@@ -71,9 +73,14 @@ function step(timestamp) {
     // achievements. Titta dock på upgrades arrayen och gör något rimligare om du
     // vill ha achievements.
     // på samma sätt kan du även dölja uppgraderingar som inte kan köpas
-    if (moneyPerClick == 10 && !achievementTest) {
-        achievementTest = true;
+    if (moneyPerClick > 9 && !achievementClick) {
+        bulle.play()
+        achievementClick = true;
         message('Du har hittat en Potatisbulle!', 'achievement');
+    }
+    if (moneyPerSecond > 99 && !achievementSecond) {
+        achievementSecond = true;
+        message('Du har hittat en Köttbulle!', 'achievement');
     }
 
     window.requestAnimationFrame(step);
@@ -107,19 +114,29 @@ window.addEventListener('load', (event) => {
  */
 upgrades = [
     {
-        name: 'Större Slev',
-        cost: 10,
+        name: 'Spade',
+        cost: 69,
         amount: 1,
     },
     {
-        name: 'Spade',
-        cost: 100,
+        name: 'Hink',
+        cost: 420,
         amount: 10,
     },
     {
-        name: 'Hjälpreda',
-        cost: 1000,
+        name: 'Klasskamrat',
+        cost: 1337,
         amount: 100,
+    },
+    {
+        name: 'Damsugare',
+        cost: 10000,
+        amount: 1000,
+    },
+    {
+        name: 'Brunsås jesus',
+        cost: 100000,
+        amount: 10000,
     },
 ];
 
@@ -156,11 +173,11 @@ function createCard(upgrade) {
             moneyPerClick++;
             money -= upgrade.cost;
             upgrade.cost *= 1.5;
-            cost.textContent = 'Köp för ' + upgrade.cost + ' dl Brunsås';
+            cost.textContent = 'Köp för ' + Math.round(upgrade.cost) + ' dl Brunsås';
             moneyPerSecond += upgrade.amount;
-            message('Grattis du har anställd en elev som brunsås samlare!', 'success');
+            message('Grattis du är på god väg att bli en brunsåsmästare!', 'success');
         } else {
-            message('Du har inte råd.', 'warning');
+            message('bristfällig mängd av brunsås.', 'warning');
         }
     });
 
