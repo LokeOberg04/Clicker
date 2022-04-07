@@ -29,6 +29,10 @@ let last = 0;
 
 let achievementClick = false;
 let achievementSecond = false;
+let achievementMoney = false;
+let achievementTime = false;
+let achievementTime2 = false;
+let achievementTime3 = false;
 
 /* Med ett valt element, som knappen i detta fall så kan vi skapa listeners
  * med addEventListener så kan vi lyssna på ett specifikt event på ett html-element
@@ -81,6 +85,22 @@ function step(timestamp) {
     if (moneyPerSecond > 99 && !achievementSecond) {
         achievementSecond = true;
         message('Du har hittat en Köttbulle!', 'achievement');
+    }
+    if (money > 10000000 && !achievementMoney) {
+        achievementMoney = true;
+        message('Du har nu 1 000 000 Liter Brunsås, du har ascendat till brunsås!', 'achievement')
+    }
+    if (last > 60000 && !achievementTime) {
+        achievementTime = true;
+        message('Du har spelat i 60 sekunder!', 'achievement')
+    }
+    if (last > 600000 && !achievementTime2) {
+        achievementTime2 = true;
+        message('Du har spelat i 10 minuter!', 'achievement')
+    }
+    if (last > 3600000 && !achievementTime3) {
+        achievementTime3 = true;
+        message('Du har spelat för länge! gå ut!', 'achievement')
     }
 
     window.requestAnimationFrame(step);

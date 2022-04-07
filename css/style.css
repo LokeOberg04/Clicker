@@ -58,6 +58,7 @@ button,
 textarea,
 select {
     font: inherit;
+    color: #744201;
 }
 
 audio {
@@ -94,8 +95,9 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #121212;
-    color: #f8f8f8;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #744201;
+    font-family: 'Milkshake', Arial, sans-serif;
+    letter-spacing: 0.1rem;
 }
 /* För att göra footern sticky så har vi flex på bodyn och då räcker det med 
  * margin-top auto här.
@@ -212,6 +214,7 @@ img {
     color: #121212;
     background-color: rebeccapurple;
 }
+
 
 /* dessa kort används för spelets uppgraderingar 
  * lägg märke till padding och margin för att ge elementen lite luft och 
